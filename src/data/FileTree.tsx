@@ -63,6 +63,7 @@ export const FileTree: IFile = {
       id: uuid(),
       name: "index1.css",
       isFolder: false,
+      content: "lorem lorem ",
     },
   ],
 };
