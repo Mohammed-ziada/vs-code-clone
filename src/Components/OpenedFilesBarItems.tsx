@@ -1,14 +1,25 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setClicekdFiles, setOpenedFiles } from "../app/features/fileTreeSlice";
+import {
+  setClicekdFiles,
+  setOpenedFiles,
+  setTabIdToRemove,
+} from "../app/features/fileTreeSlice";
 import { IFile } from "../interface";
 import RenderFileIcon from "./RenderFileIcon";
 import CloseIcon from "./SVG/CloseIcon";
 import { RootState } from "../app/store";
+// import { useState } from "react";
+// import ContextMenu from "./ui/DropDown";
 
 interface Iprops {
   file: IFile;
 }
 const OpenedFilesBarItems = ({ file }: Iprops) => {
+  // const [showMenu, setShowMenu] = useState(false);
+  // const [menuPosition, setMenuPosition] = useState<{ x: number; y: number }>({
+  //   x: 0,
+  //   y: 0,
+  // });
   const dispatch = useDispatch();
   const { openFiles, ClickedFile } = useSelector(
     (state: RootState) => state.tree
@@ -61,6 +72,10 @@ const OpenedFilesBarItems = ({ file }: Iprops) => {
             file.id === ClickedFile.activeTapId
               ? "2px solid white"
               : "2px solid transparent",
+        }}
+        onContextMenu={(e) => {
+          e.preventDefault();
+          dispatch(setTabIdToRemove(file.id));
         }}
       >
         <span className="w-5 h-5">
