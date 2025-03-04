@@ -1,5 +1,5 @@
 // import { extensionIconPaths } from "../constant/Index";
-import { extensionIconPaths } from "../constant";
+import { extensionIconPaths } from "../constant/Index";
 import IconImg from "./IconImg";
 // import IconImg from "./IconImg";
 import FileIcon from "./SVG/File";
